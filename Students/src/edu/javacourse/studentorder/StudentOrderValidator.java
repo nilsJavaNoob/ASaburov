@@ -1,8 +1,19 @@
+package edu.javacourse.studentorder;
+
+import edu.javacourse.studentorder.domain.*;
+import edu.javacourse.studentorder.mail.MailSender;
+import edu.javacourse.studentorder.validator.ChildrenValidator;
+import edu.javacourse.studentorder.validator.CityRegisterValidator;
+import edu.javacourse.studentorder.validator.StudentValidator;
+import edu.javacourse.studentorder.validator.WeddingValidator;
+
 /**
  * Created by n on 12.05.18.
  */
 public class StudentOrderValidator {
-
+    public static void main(String[] args) {
+        checkAll();
+    }
     static void checkAll(){
         while(true){
             StudentOrder so = readStudentOrder();
@@ -16,15 +27,24 @@ public class StudentOrderValidator {
                 break;
 
             }
+            AnswerWedding answerWedding = checkWedding(so);
+            AnswerChildren answerChildren = checkChildren(so);
+            AnswerStudent answerStudent = checkStudent(so);
+
+            sendMail(so);
         }//while
-    }
+
+    }//checkAll
 
     static StudentOrder readStudentOrder(){
         StudentOrder so = new StudentOrder();
-        return null;
+        return so;
     }
-    static AnswerCityRegister checkCityRegister(StudentOrder so){
-        return CityRegisterValidator.checkCityRegister(so);
+    static AnswerCityRegister checkCityRegister(StudentOrder so) {
+        CityRegisterValidator crv = new CityRegisterValidator();
+        crv.hostName = "host1";
+        AnswerCityRegister answ = crv.checkCityRegister(so);
+        return  answ;
     }
 
     static AnswerWedding checkWedding(StudentOrder so){
@@ -39,7 +59,7 @@ public class StudentOrderValidator {
     }
 
     static AnswerStudent checkStudent(StudentOrder so){
-        return  new StudentValidator().checkStudent(so);;
+        return  new StudentValidator().checkStudent(so);
     }
 
     static void sendMail(StudentOrder so) {
