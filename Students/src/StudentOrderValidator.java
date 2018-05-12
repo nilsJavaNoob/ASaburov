@@ -28,22 +28,22 @@ public class StudentOrderValidator {
     }
 
     static AnswerWedding checkWedding(StudentOrder so){
-        System.out.println("Wedding is running");
-        return new AnswerWedding();
+        WeddingValidator wd = new WeddingValidator();
+        return wd.checkWedding(so);
     }
 
     static AnswerChildren checkChildren(StudentOrder so){
-        System.out.println("Children check is running");
+        ChildrenValidator cw = new ChildrenValidator();
+        cw.checkChildren(so);
         return new AnswerChildren();
     }
 
     static AnswerStudent checkStudent(StudentOrder so){
-        System.out.println("Студены проверяются");
-        return new AnswerStudent();
+        return  new StudentValidator().checkStudent(so);;
     }
 
-    static void sendMail(StudentOrder so){
-        System.out.println("Почта отправлена");
+    static void sendMail(StudentOrder so) {
+        new MailSender().sendMail(so);
     }
 
 }//class
