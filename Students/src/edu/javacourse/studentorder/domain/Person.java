@@ -6,9 +6,9 @@ import java.time.LocalDate;
  * Created by javaNoob on 16.05.2018.
  */
 public class Person {
-    private String surName;
-    private String givenName;
-    private String patronmic;
+    String surName;
+    protected String givenName;
+    private String patronymic;
     private LocalDate dateOfBirth;
     private Address address;
 
@@ -28,12 +28,12 @@ public class Person {
         this.givenName = givenName;
     }
 
-    public String getPatronmic() {
-        return patronmic;
+    public String getPatronymic() {
+        return patronymic;
     }
 
-    public void setPatronmic(String patronmic) {
-        this.patronmic = patronmic;
+    public void setPatronymic(String patronmic) {
+        this.patronymic = patronmic;
     }
 
     public LocalDate getDateOfBirth() {
