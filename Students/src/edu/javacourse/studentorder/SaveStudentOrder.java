@@ -3,7 +3,7 @@ package edu.javacourse.studentorder;
 import edu.javacourse.studentorder.domain.AnswerChildren;
 import edu.javacourse.studentorder.domain.other.Adult;
 import edu.javacourse.studentorder.domain.StudentOrder;
-import edu.javacourse.studentorder.domain.other.someClass;
+import edu.javacourse.studentorder.domain.other.B;
 
 /**
  * Created by n on 08.05.18.
@@ -13,7 +13,7 @@ public class SaveStudentOrder {
         StudentOrder so = buildStudentOrder();
         //System.out.println(so.getHusband().getAdultString());
         new AnswerChildren().test();
-        new someClass().test();
+        new B().test();
 
         long ans = saveStudentOrder(so);
         System.out.println(ans);

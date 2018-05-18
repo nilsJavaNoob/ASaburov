@@ -7,8 +7,8 @@ import java.time.LocalDate;
  */
 public class Person {
     String surName;
-    protected String givenName;
-    private String patronymic;
+    private String givenName;
+    protected String patronymic;
     private LocalDate dateOfBirth;
     private Address address;
 

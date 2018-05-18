@@ -19,6 +19,7 @@ public class Adult extends Person {
 //====
 
     public String getPassportSeria() {
+         = "ddd";
         return passportSeria;
     }
 
