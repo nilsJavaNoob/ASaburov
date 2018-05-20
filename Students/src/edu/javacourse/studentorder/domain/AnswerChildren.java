@@ -7,13 +7,6 @@ import edu.javacourse.studentorder.domain.other.Adult;
  */
 public class AnswerChildren {
 
-    public void test(){
-        Person p = new Person();
-        p.surName  = "ss";
-        p.givenName  = "gs";
-        p.patronymic  = "ps";
 
-        System.out.println(p.surName + " "+p.patronymic +" " +p.givenName);
-    }
     
 }

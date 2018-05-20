@@ -5,6 +5,7 @@ import edu.javacourse.studentorder.domain.Person;
 import java.time.LocalDate;
 
 public class Adult extends Person {
+
     private  String passportSeria;
     private  String passpotNumber;
     private LocalDate issueDate;
@@ -12,14 +13,12 @@ public class Adult extends Person {
     private String university;
     private String studentId;
 
-//====
-    //public String getAdultString(){
-      //  return "name"+ " " + surName + " " + givenName + " " + patronymic + " !";
-    //}
-//====
+
 
     public String getPassportSeria() {
-         = "ddd";
+    //     surName = "ddd";
+      //   givenName = "fff";
+         patronymic = "gg";
         return passportSeria;
     }
 

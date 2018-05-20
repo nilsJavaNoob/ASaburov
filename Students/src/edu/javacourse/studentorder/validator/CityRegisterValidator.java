@@ -12,7 +12,7 @@ public class CityRegisterValidator {
     protected int port;
     String password;
     String login;
-
+    //это пока заглушка
      public AnswerCityRegister checkCityRegister(StudentOrder so){
         System.out.println("CityRegister is running:" + hostName + " " + login + " " + password);
         AnswerCityRegister ans = new AnswerCityRegister();

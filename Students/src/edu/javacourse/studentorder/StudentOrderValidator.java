@@ -7,63 +7,83 @@ import edu.javacourse.studentorder.validator.CityRegisterValidator;
 import edu.javacourse.studentorder.validator.StudentValidator;
 import edu.javacourse.studentorder.validator.WeddingValidator;
 
-/**
- * Created by n on 12.05.18.
- */
 public class StudentOrderValidator {
+
+    private CityRegisterValidator cityRegisterVal;
+    private WeddingValidator weddingVal;
+    private ChildrenValidator childrenVal;
+    private StudentValidator studentVal;
+    private MailSender mailSender;
+
     public static void main(String[] args) {
-        checkAll();
+        StudentOrderValidator sov = new StudentOrderValidator();
+        sov.checkAll();//провести все виды проверки
     }
-    static void checkAll(){
-        while(true){
-            StudentOrder so = readStudentOrder();
-            System.out.println("start");
-            if(so == null){
-                break;
+
+    public StudentOrderValidator (){
+
+        cityRegisterVal = new CityRegisterValidator();
+        weddingVal = new WeddingValidator();
+        childrenVal = new ChildrenValidator();
+        studentVal = new StudentValidator();
+        mailSender = new MailSender();
+    }
+
+    public void checkAll(){
+        //читаем все новые заявки студентов с сайта
+        // и храним их в soArray[]
+        System.out.println("читаем все новые заявки");
+        StudentOrder[] soArray = readStudentOrders();
+        //вытаскиваем заявки по одной и отдаём на все виды проверок
+        // пока не закончитя массив
+        System.out.println("вытаскиваем заявки по одной из цикла");
+
+        /*for(int c = 0; c < soArray.length; c++){
+                checkOneOrder(soArray[c]);
             }
-            System.out.println("finish");
-            AnswerCityRegister cityAnswer = checkCityRegister(so);
-            if(!cityAnswer.success){
-                break;
-
-            }
-            AnswerWedding answerWedding = checkWedding(so);
-            AnswerChildren answerChildren = checkChildren(so);
-            AnswerStudent answerStudent = checkStudent(so);
-
-            sendMail(so);
-        }//while
-
+*/
+        for(StudentOrder so: soArray){
+            System.out.println("");
+            checkOneOrder(so);
+        }
     }//checkAll
 
-    static StudentOrder readStudentOrder(){
-        StudentOrder so = new StudentOrder();
-        return so;
-    }
-    static AnswerCityRegister checkCityRegister(StudentOrder so) {
-        CityRegisterValidator crv = new CityRegisterValidator();
-        crv.hostName = "host1";
-        AnswerCityRegister answ = crv.checkCityRegister(so);
-        return  answ;
+    public StudentOrder[] readStudentOrders(){
+        StudentOrder[] soArray = new StudentOrder[3];
+
+        for(int c = 0;c < soArray.length; c++){
+            soArray[c] = SaveStudentOrder.buildStudentOrder(c);
+        }
+
+        return soArray;
     }
 
-    static AnswerWedding checkWedding(StudentOrder so){
-        WeddingValidator wd = new WeddingValidator();
-        return wd.checkWedding(so);
+//проверяет одну заявку на все виды проверок
+    public void checkOneOrder(StudentOrder so){
+        System.out.println("order");
+        AnswerCityRegister cityAnswer = checkCityRegister(so);
+        AnswerWedding answerWedding = checkWedding(so);
+        AnswerChildren answerChildren = checkChildren(so);
+        AnswerStudent answerStudent = checkStudent(so);
+        sendMail(so);
     }
-
-    static AnswerChildren checkChildren(StudentOrder so){
-        ChildrenValidator cw = new ChildrenValidator();
-        cw.checkChildren(so);
-        return new AnswerChildren();
+    //для каждого вида проверок созданы специальные классы
+    // в методах которых проходит проверка
+     public AnswerCityRegister checkCityRegister(StudentOrder so) {
+        return cityRegisterVal.checkCityRegister(so);
     }
-
-    static AnswerStudent checkStudent(StudentOrder so){
-        return  new StudentValidator().checkStudent(so);
+    public AnswerWedding checkWedding(StudentOrder so){
+        return weddingVal.checkWedding(so);
     }
+    public AnswerChildren checkChildren(StudentOrder so){
 
-    static void sendMail(StudentOrder so) {
-        new MailSender().sendMail(so);
+        return childrenVal.checkChildren(so);
     }
-
+    public AnswerStudent checkStudent(StudentOrder so)
+    {
+        return  studentVal.checkStudent(so);
+    }
+    public void sendMail(StudentOrder so) {
+        mailSender.sendMail(so);
+    }
 }//class

@@ -2,9 +2,6 @@ package edu.javacourse.studentorder.domain;
 
 import java.time.LocalDate;
 
-/**
- * Created by javaNoob on 16.05.2018.
- */
 public class Person {
     String surName;
     private String givenName;
@@ -12,6 +9,10 @@ public class Person {
     private LocalDate dateOfBirth;
     private Address address;
 
+    public Person(){
+       System.out.println("Person is created");
+    }
+    //=========getters-setters=============
     public String getSurName() {
         return surName;
     }
@@ -51,4 +52,5 @@ public class Person {
     public void setAddress(Address address) {
         this.address = address;
     }
+    //========end getters-setters=============
 }//class

@@ -9,10 +9,10 @@ public class A {
     public void test(){
         Person p = new Person();
         p.surName ="nd";//default(package-private)
-        p.givenName ="gd";//private
+        //p.givenName ="gd";//private
         p.patronymic="pd";//protected
 
-        System.out.println(p.surName + " "+p.patronymic +" " +p.givenName);
+       // System.out.println(p.surName + " "+p.patronymic +" " +p.givenName);
 
     }
 }
