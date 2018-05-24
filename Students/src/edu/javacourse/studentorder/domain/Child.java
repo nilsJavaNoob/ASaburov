@@ -10,6 +10,16 @@ public class Child extends Person {
     private LocalDate issueDate;
     private String issueDepartment;
 
+    public Child(String surName, String givenName, String patronymic,
+                 LocalDate dateOfBirth, String sertificateNumber,
+                 LocalDate issueDate, String issueDepartment) {
+
+        super(surName, givenName, patronymic, dateOfBirth);
+        this.sertificateNumber = sertificateNumber;
+        this.issueDate = issueDate;
+        this.issueDepartment = issueDepartment;
+    }
+
     public String getSertificateNumber() {
         return sertificateNumber;
     }

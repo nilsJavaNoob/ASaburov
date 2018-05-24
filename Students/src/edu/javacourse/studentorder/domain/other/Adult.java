@@ -13,12 +13,30 @@ public class Adult extends Person {
     private String university;
     private String studentId;
 
+    public Adult(){
+        super("","","",null);
+    }
+
+
+    public Adult(String surName, String givenName, String patronymic,
+                 LocalDate dateOfBirth, String passportSeria,
+                 String passpotNumber, LocalDate issueDate,
+                 String issueDepartment, String university, String studentId) {
+
+        super(surName, givenName, patronymic, dateOfBirth);
+        this.passportSeria = passportSeria;
+        this.passpotNumber = passpotNumber;
+        this.issueDate = issueDate;
+        this.issueDepartment = issueDepartment;
+        this.university = university;
+        this.studentId = studentId;
+    }
 
 
     public String getPassportSeria() {
     //     surName = "ddd";
       //   givenName = "fff";
-         patronymic = "gg";
+         //patronymic = "gg";
         return passportSeria;
     }
 

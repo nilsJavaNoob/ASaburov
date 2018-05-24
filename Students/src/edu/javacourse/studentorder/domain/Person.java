@@ -3,15 +3,22 @@ package edu.javacourse.studentorder.domain;
 import java.time.LocalDate;
 
 public class Person {
-    String surName;
+    private String surName;
     private String givenName;
-    protected String patronymic;
+    private String patronymic;
     private LocalDate dateOfBirth;
     private Address address;
 
-    public Person(){
-       System.out.println("Person is created");
+    public Person(String surName, String givenName, String patronymic, LocalDate dateOfBirth) {
+        this.surName = surName;
+        this.givenName = givenName;
+        this.patronymic = patronymic;
+        this.dateOfBirth = dateOfBirth;
     }
+
+    /*public Person(){
+
+    }*/
     //=========getters-setters=============
     public String getSurName() {
         return surName;
