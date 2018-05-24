@@ -10,6 +10,10 @@ public class Child extends Person {
     private LocalDate issueDate;
     private String issueDepartment;
 
+    public Child(String surName, String givenName, String patronymic, LocalDate dateOfBirth, Address address) {
+        super(surName, givenName, patronymic, dateOfBirth, address);
+    }
+
     public String getSertificateNumber() {
         return sertificateNumber;
     }

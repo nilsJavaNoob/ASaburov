@@ -1,5 +1,6 @@
 package edu.javacourse.studentorder.domain.other;
 
+import edu.javacourse.studentorder.domain.Address;
 import edu.javacourse.studentorder.domain.Person;
 
 import java.time.LocalDate;
@@ -12,13 +13,18 @@ public class Adult extends Person {
     private String issueDepartment;
     private String university;
     private String studentId;
+    public Adult(){
 
+    }
+    public Adult(String surName, String givenName, String patronymic, LocalDate dateOfBirth, Address address) {
+        super(surName, givenName, patronymic, dateOfBirth, address);
+    }
 
 
     public String getPassportSeria() {
     //     surName = "ddd";
       //   givenName = "fff";
-         patronymic = "gg";
+//         patronymic = "gg";
         return passportSeria;
     }
 
