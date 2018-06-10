@@ -10,11 +10,10 @@ public class Child extends Person {
     private LocalDate issueDate;
     private String issueDepartment;
 
-    public Child(String surName, String givenName, String patronymic,
-                 LocalDate dateOfBirth, String sertificateNumber,
-                 LocalDate issueDate, String issueDepartment) {
+    public Child(String surName, String givenName, String patronymic, LocalDate dateOfBirth) {
 
         super(surName, givenName, patronymic, dateOfBirth);
+
         this.sertificateNumber = sertificateNumber;
         this.issueDate = issueDate;
         this.issueDepartment = issueDepartment;
@@ -24,7 +23,7 @@ public class Child extends Person {
         return sertificateNumber;
     }
 
-    public void setSertificateNumber(String sertificateNumber) {
+    public void setCertificateNumber(String sertificateNumber) {
         this.sertificateNumber = sertificateNumber;
     }
 

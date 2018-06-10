@@ -7,6 +7,15 @@ public class Address {
     private String postCode;
     private String street;
     private String building;
+
+    public Address(String postCode, String street, String building, String extension, String appartment) {
+        this.postCode = postCode;
+        this.street = street;
+        this.building = building;
+        this.extension = extension;
+        this.appartment = appartment;
+    }
+
     private String extension;
     private String appartment;
 

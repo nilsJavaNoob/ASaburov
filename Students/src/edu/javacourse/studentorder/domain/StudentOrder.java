@@ -2,6 +2,8 @@ package edu.javacourse.studentorder.domain;
 
 import edu.javacourse.studentorder.domain.other.Adult;
 
+import java.time.LocalDate;
+
 /**
  * Created by n on 12.05.18.
  */
@@ -41,5 +43,14 @@ private Child child;
 
     public void setChild(Child child) {
         this.child = child;
+    }
+
+    public void setMarriageCertificatedId(String s) {
+    }
+
+    public void setMarrigeDate(LocalDate of) {
+    }
+
+    public void setMarriageOffice(String s) {
     }
 }//class

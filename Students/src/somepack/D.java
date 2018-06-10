@@ -7,7 +7,7 @@ import edu.javacourse.studentorder.domain.Person;
  */
 public class D {
     public void test() {
-        Person p = new Person();
+        //Person p = new Person();
     //    p.surName = "nd";//default(package-private)
     //    p.givenName = "gd";//private
     //    p.patronymic = "pd";//protected
