@@ -23,10 +23,11 @@ public class StudentOrderValidator {
     public StudentOrderValidator (){
 
         cityRegisterVal = new CityRegisterValidator();
-        weddingVal = new WeddingValidator();
-        childrenVal = new ChildrenValidator();
-        studentVal = new StudentValidator();
-        mailSender = new MailSender();
+        //-------------------
+        //weddingVal = new WeddingValidator();
+        //childrenVal = new ChildrenValidator();
+        //studentVal = new StudentValidator();
+        //mailSender = new MailSender();
     }
 
     public void checkAll(){
@@ -38,12 +39,12 @@ public class StudentOrderValidator {
         // пока не закончитя массив
         System.out.println("вытаскиваем заявки по одной из цикла");
 
-        /*for(int c = 0; c < soArray.length; c++){
-                checkOneOrder(soArray[c]);
-            }
-*/
+        //for(int c = 0; c < soArray.length; c++){
+          //      checkOneOrder(soArray[c]);
+        //}
+        //извлекаем из массива по одной заявке и отдаём её на проверку
         for(StudentOrder so: soArray){
-            System.out.println("");
+            System.out.println("! заявка !");
             checkOneOrder(so);
         }
     }//checkAll
@@ -54,36 +55,42 @@ public class StudentOrderValidator {
         for(int c = 0;c < soArray.length; c++){
             soArray[c] = SaveStudentOrder.buildStudentOrder(c);
         }
-
         return soArray;
     }
 
 //проверяет одну заявку на все виды проверок
     public void checkOneOrder(StudentOrder so){
-        System.out.println("order");
+        System.out.println("Check One order ");
         AnswerCityRegister cityAnswer = checkCityRegister(so);
-        AnswerWedding answerWedding = checkWedding(so);
-        AnswerChildren answerChildren = checkChildren(so);
-        AnswerStudent answerStudent = checkStudent(so);
-        sendMail(so);
+        //------------------
+        //AnswerWedding answerWedding = checkWedding(so);
+        //AnswerChildren answerChildren = checkChildren(so);
+        //AnswerStudent answerStudent = checkStudent(so);
+        //sendMail(so);
     }
     //для каждого вида проверок созданы специальные классы
     // в методах которых проходит проверка
      public AnswerCityRegister checkCityRegister(StudentOrder so) {
+
         return cityRegisterVal.checkCityRegister(so);
     }
+//------------------
     public AnswerWedding checkWedding(StudentOrder so){
+
         return weddingVal.checkWedding(so);
     }
+
     public AnswerChildren checkChildren(StudentOrder so){
 
         return childrenVal.checkChildren(so);
     }
     public AnswerStudent checkStudent(StudentOrder so)
+
     {
         return  studentVal.checkStudent(so);
     }
-    public void sendMail(StudentOrder so) {
+    public void sendMail(StudentOrder so)
+    {
         mailSender.sendMail(so);
     }
 }//class

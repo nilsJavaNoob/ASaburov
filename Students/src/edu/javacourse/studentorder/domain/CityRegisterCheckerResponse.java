@@ -3,12 +3,13 @@ package edu.javacourse.studentorder.domain;
 /**
  * Created by javaNoob on 24.05.2018.
  */
-public class CityRegisterCheckerResponse {
+public class CityRegisterCheckerResponse
+{
     boolean existing;
-    Boolean temporal = null;
+    boolean temporal;
     /*Integer d;
     Double f;
-    Long g;  
+    Long g;
     Character ch;*/
 
     public boolean isExisting() {
@@ -27,5 +28,11 @@ public class CityRegisterCheckerResponse {
         this.temporal = temporal;
     }
 
-
-}
+    @Override
+    public String toString() {
+        return "CityRegisterCheckerResponse{" +
+                "existing=" + existing +
+                ", temporal=" + temporal +
+                '}';
+    }
+}//class

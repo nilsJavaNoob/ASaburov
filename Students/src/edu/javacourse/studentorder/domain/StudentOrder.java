@@ -1,12 +1,8 @@
 package edu.javacourse.studentorder.domain;
 
 import edu.javacourse.studentorder.domain.other.Adult;
-
 import java.time.LocalDate;
 
-/**
- * Created by n on 12.05.18.
- */
 public class StudentOrder {
 private long studentOrderId;
 private Adult husband;

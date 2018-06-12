@@ -2,7 +2,6 @@ package edu.javacourse.studentorder;
 
 import edu.javacourse.studentorder.domain.*;
 import edu.javacourse.studentorder.domain.other.Adult;
-
 import java.time.LocalDate;
 
 /**
@@ -29,8 +28,8 @@ public class SaveStudentOrder {
         Address address = new Address("195000", "Заневский пр.","12", "", "142");
         //Муж
         Adult husband = new Adult("Васильев","Андрей","Васильевич", LocalDate.of(1997,8, 24));
-              husband.getPassportSeria("" + (100 + id));
-              husband.getPasspotNumber("" + (100000 + id));
+              husband.setPassportSeria("" + (1000 + id));
+              husband.setPasspotNumber("" + (100000 + id));
               husband.setIssueDate(LocalDate.of(2017,9,15));
               husband.setIssueDepartment("Отдел милиции №" + id);
               husband.setStudentId("" + (100000 + id));
@@ -49,6 +48,10 @@ public class SaveStudentOrder {
               child.setIssueDate(LocalDate.of(2018,7,19));
               child.setIssueDepartment("Отдел ЗАГС №" + id);
               child.setAddress(address);
+
+              so.setHusband(husband);
+              so.setWife(wife);
+              so.setChild(child);
 
           return so;
     }

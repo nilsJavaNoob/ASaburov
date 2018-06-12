@@ -31,7 +31,7 @@ public class Adult extends Person {
     }
 
 
-    public String getPassportSeria(String s) {
+    public String getPassportSeria() {
     //     surName = "ddd";
       //   givenName = "fff";
          //patronymic = "gg";
