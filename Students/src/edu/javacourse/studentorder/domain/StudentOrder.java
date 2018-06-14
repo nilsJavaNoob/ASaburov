@@ -2,12 +2,14 @@ package edu.javacourse.studentorder.domain;
 
 import edu.javacourse.studentorder.domain.other.Adult;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class StudentOrder {
 private long studentOrderId;
 private Adult husband;
 private Adult wife;
-private Child child;
+private List<Child> children;
 
     public long getStudentOrderId() {
         return studentOrderId;
@@ -33,12 +35,15 @@ private Child child;
         this.wife = wife;
     }
 
-    public Child getChild() {
-        return child;
+    public void addChild(Child child){
+        if (children == null){
+            children = new ArrayList<Child>(5);
+        }
+        children.add(child);
     }
 
-    public void setChild(Child child) {
-        this.child = child;
+    public List<Child> getChildren() {
+        return children;
     }
 
     public void setMarriageCertificatedId(String s) {
