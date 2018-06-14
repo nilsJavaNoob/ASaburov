@@ -7,6 +7,9 @@ import edu.javacourse.studentorder.validator.CityRegisterValidator;
 import edu.javacourse.studentorder.validator.StudentValidator;
 import edu.javacourse.studentorder.validator.WeddingValidator;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class StudentOrderValidator {
 
     private CityRegisterValidator cityRegisterVal;
@@ -33,8 +36,8 @@ public class StudentOrderValidator {
     public void checkAll(){
         //читаем все новые заявки студентов с сайта
         // и храним их в soArray[]
-        System.out.println("читаем все новые заявки");
-        StudentOrder[] soArray = readStudentOrders();
+        System.out.println(" кладём в список все новые заявки");
+        List<StudentOrder> soList = readStudentOrders();
         //вытаскиваем заявки по одной и отдаём на все виды проверок
         // пока не закончитя массив
         System.out.println("вытаскиваем заявки по одной из цикла");
@@ -43,19 +46,20 @@ public class StudentOrderValidator {
           //      checkOneOrder(soArray[c]);
         //}
         //извлекаем из массива по одной заявке и отдаём её на проверку
-        for(StudentOrder so: soArray){
+        for(StudentOrder so: soList){
             System.out.println("! заявка !");
             checkOneOrder(so);
         }
     }//checkAll
 
-    public StudentOrder[] readStudentOrders(){
-        StudentOrder[] soArray = new StudentOrder[3];
+    public List<StudentOrder> readStudentOrders(){
+        List<StudentOrder> soList = new LinkedList<StudentOrder>();
 
-        for(int c = 0;c < soArray.length; c++){
-            soArray[c] = SaveStudentOrder.buildStudentOrder(c);
+        for(int c = 0;c < 5; c++){
+            StudentOrder so = SaveStudentOrder.buildStudentOrder(c);
+            soList.add(so);
         }
-        return soArray;
+        return soList;
     }
 
 //проверяет одну заявку на все виды проверок
