@@ -1,12 +1,13 @@
 package edu.javacourse.studentorder.validator;
 
-import edu.javacourse.studentorder.domain.AnswerCityRegister;
+import edu.javacourse.studentorder.domain.register.AnswerCityRegister;
 import edu.javacourse.studentorder.domain.Child;
-import edu.javacourse.studentorder.domain.CityRegisterCheckerResponse;
+import edu.javacourse.studentorder.domain.register.CityRegisterResponse;
 import edu.javacourse.studentorder.domain.StudentOrder;
 import edu.javacourse.studentorder.exception.CityRegisterException;
+import edu.javacourse.studentorder.validator.register.CityRegisterChecker;
+import edu.javacourse.studentorder.validator.register.FakeCityRegisterChecker;
 
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -26,31 +27,35 @@ public class CityRegisterValidator {
     }
 
     public AnswerCityRegister checkCityRegister(StudentOrder so){
+
+        AnswerCityRegister ans = new AnswerCityRegister();
+
         try{
-            CityRegisterCheckerResponse hans = personChecker.checkPerson(so.getHusband());
-            CityRegisterCheckerResponse wans = personChecker.checkPerson(so.getWife());
+            CityRegisterResponse hans = personChecker.checkPerson(so.getHusband());
+            CityRegisterResponse wans = personChecker.checkPerson(so.getWife());
             //получим у заявки список детей студенческой семьи
             List<Child> childList = so.getChildren();
             //1-й способ
-            for(int i =0; i < childList.size(); i++){
-
-                CityRegisterCheckerResponse cans = personChecker.checkPerson(childList.get(i));
-            }
+//            for(int i =0; i < childList.size(); i++){
+//
+//                CityRegisterResponse cans = personChecker.checkPerson(childList.get(i));
+//            }
             //2-способ
-            for(Iterator<Child> it = childList.iterator(); it.hasNext();){
-                Child child = it.next();
-                CityRegisterCheckerResponse cans = personChecker.checkPerson(child);
-            }
+//            for(Iterator<Child> it = childList.iterator(); it.hasNext();){
+//                Child child = it.next();
+//                CityRegisterResponse cans = personChecker.checkPerson(child);
+//            }
             //3-й способ
             for(Child child: childList){
-                CityRegisterCheckerResponse cans = personChecker.checkPerson(child);
+                CityRegisterResponse cans = personChecker.checkPerson(child);
             }
 
         } catch (CityRegisterException ex){
             ex.printStackTrace();
         }
 
-        AnswerCityRegister ans = new AnswerCityRegister();
+
         return  ans;
     }
+    private Answer
 }//class

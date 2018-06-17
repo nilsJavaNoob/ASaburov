@@ -57,10 +57,10 @@ public class SaveStudentOrder {
               child2.setAddress(address);
 
         so.setHusband(husband);
-              so.setWife(wife);
-              so.addChild(child);
-              so.addChild(child2);
+        so.setWife(wife);
+        so.addChild(child);
+        so.addChild(child2);
 
-          return so;
+        return so;
     }
 }//class
