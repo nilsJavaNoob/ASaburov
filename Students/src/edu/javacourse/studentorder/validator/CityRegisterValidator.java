@@ -7,6 +7,7 @@ import edu.javacourse.studentorder.domain.register.AnswerCityRegisterItem;
 import edu.javacourse.studentorder.domain.register.CityRegisterResponse;
 import edu.javacourse.studentorder.domain.StudentOrder;
 import edu.javacourse.studentorder.exception.CityRegisterException;
+import edu.javacourse.studentorder.exception.TransportException;
 import edu.javacourse.studentorder.validator.register.CityRegisterChecker;
 import edu.javacourse.studentorder.validator.register.FakeCityRegisterChecker;
 
@@ -14,10 +15,7 @@ import java.util.List;
 
 public class CityRegisterValidator {
 
-    public String hostName;
-    protected int port;
-    private String login;
-    String password;
+    public static final String IN_CODE = "NO_GRN";
     private CityRegisterChecker personChecker;//interface
 
     public CityRegisterValidator() {
@@ -38,14 +36,24 @@ public class CityRegisterValidator {
         return  ans;
     }
 
-    private AnswerCityRegisterItem checkPerson(Person p){
-        AnswerCityRegisterItem ans;
+    private AnswerCityRegisterItem checkPerson(Person person){
+        AnswerCityRegisterItem.CityStatus status =null;
+        AnswerCityRegisterItem.CityError error = null;
         try{
-            CityRegisterResponse cans = personChecker.checkPerson(p);
+            CityRegisterResponse tmp = personChecker.checkPerson(person);
+            status = tmp.isExisting() ?
+                    AnswerCityRegisterItem.CityStatus.YES :
+                    AnswerCityRegisterItem.CityStatus.NO;
         } catch (CityRegisterException ex){
-            ex.printStackTrace();
+            ex.printStackTrace(System.out);
+            status =AnswerCityRegisterItem.CityStatus.ERROR;
+            error = new AnswerCityRegisterItem.CityError(ex.getCode(),ex.getMessage());
+        }catch (TransportException ex){
+            ex.printStackTrace(System.out);
+            status = AnswerCityRegisterItem.CityStatus.ERROR;
+            error = new AnswerCityRegisterItem.CityError(IN_CODE, ex.getMessage());
         }
-
+        AnswerCityRegisterItem item = new AnswerCityRegisterItem(status, person, error);
         return null;
     }
 }//class

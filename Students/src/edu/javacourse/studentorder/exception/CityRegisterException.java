@@ -1,17 +1,24 @@
 package edu.javacourse.studentorder.exception;
 
-/**
- * Created by javaNoob on 06.06.2018.
- */
 public class CityRegisterException extends Exception {
+    private String code;
+
     public CityRegisterException() {
     }
 
-    public CityRegisterException(String message) {
+    public CityRegisterException(String code,String message) {
+
         super(message);
+        this.code = code;
     }
 
-    public CityRegisterException(String message, Throwable cause) {
+    public CityRegisterException(String code,String message, Throwable cause) {
+
         super(message, cause);
+        this.code = code;
     }
-}
+
+    public String getCode() {
+        return code;
+    }
+}//class
