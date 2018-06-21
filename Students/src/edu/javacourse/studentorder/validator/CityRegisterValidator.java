@@ -31,7 +31,7 @@ public class CityRegisterValidator {
 
         //получим у заявки список детей студенческой семьи
         for(Child child: so.getChildren()){
-            checkPerson(child);
+            ans.addItem(checkPerson(child));
         }
         return  ans;
     }
