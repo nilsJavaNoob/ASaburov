@@ -12,14 +12,14 @@ import edu.javacourse.studentorder.exception.TransportException;
  */
 public class FakeCityRegisterChecker implements CityRegisterChecker
 {
-    public static final String GOOD_1 = "1000";
-    public static final String GOOD_2 = "2000";
-    public static final String BAD_1 = "1001";
-    public static final String BAD_2 = "2001";
-    public static final String ERROR_1 = "1002";
-    public static final String ERROR_2 = "2002";
-    public static final String ERROR_T_1 = "1003";
-    public static final String ERROR_T_2 = "2003";
+    public static final String GOOD_1 = "1000";//Все участники пропмсаны, нет ошибок
+    public static final String GOOD_2 = "2000";//Все участники пропмсаны, нет ошибок
+    public static final String BAD_1 = "1001";//заявитель не прописан, но нет ошибок
+    public static final String BAD_2 = "2001";//заявитель не прописан, но нет ошибок
+    public static final String ERROR_1 = "1002";//Ошибки из ГРН(мы их должны обработать)
+    public static final String ERROR_2 = "2002";//Ошибки из ГРН(мы их должны обработать)
+    public static final String ERROR_T_1 = "1003";//Транспортная ошибка
+    public static final String ERROR_T_2 = "2003";//Транспортная ошибка
 
 
     public CityRegisterResponse checkPerson(Person person)
