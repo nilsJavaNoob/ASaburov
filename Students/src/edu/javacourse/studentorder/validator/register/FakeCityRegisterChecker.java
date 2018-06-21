@@ -7,9 +7,6 @@ import edu.javacourse.studentorder.domain.other.Adult;
 import edu.javacourse.studentorder.exception.CityRegisterException;
 import edu.javacourse.studentorder.exception.TransportException;
 
-/**
- * Created by javaNoob on 06.06.2018.
- */
 public class FakeCityRegisterChecker implements CityRegisterChecker
 {
     public static final String GOOD_1 = "1000";//Все участники пропмсаны, нет ошибок

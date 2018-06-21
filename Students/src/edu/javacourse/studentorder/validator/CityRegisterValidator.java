@@ -37,8 +37,10 @@ public class CityRegisterValidator {
     }
 
     private AnswerCityRegisterItem checkPerson(Person person){
+
         AnswerCityRegisterItem.CityStatus status =null;
         AnswerCityRegisterItem.CityError error = null;
+
         try{
             CityRegisterResponse tmp = personChecker.checkPerson(person);
             status = tmp.isExisting() ?
@@ -52,9 +54,14 @@ public class CityRegisterValidator {
             ex.printStackTrace(System.out);
             status = AnswerCityRegisterItem.CityStatus.ERROR;
             error = new AnswerCityRegisterItem.CityError(IN_CODE, ex.getMessage());
+        }catch (Exception ex){
+            ex.printStackTrace(System.out);
+            status = AnswerCityRegisterItem.CityStatus.ERROR;
+            error = new AnswerCityRegisterItem.CityError(IN_CODE, ex.getMessage());
         }
+
         AnswerCityRegisterItem item = new AnswerCityRegisterItem(status, person, error);
-        return null;
+        return item;
     }
 }//class
 
