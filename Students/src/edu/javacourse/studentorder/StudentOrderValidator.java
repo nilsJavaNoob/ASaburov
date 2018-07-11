@@ -36,7 +36,7 @@ public class StudentOrderValidator {
 
     public void checkAll(){
         //читаем все новые заявки студентов с сайта
-        // и храним их в soArray[]
+        // и храним их в soList[]
         System.out.println(" кладём в список все новые заявки");
         List<StudentOrder> soList = readStudentOrders();
         //вытаскиваем заявки по одной и отдаём на все виды проверок
