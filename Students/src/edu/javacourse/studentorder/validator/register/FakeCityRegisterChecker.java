@@ -6,7 +6,7 @@ import edu.javacourse.studentorder.domain.Person;
 import edu.javacourse.studentorder.domain.other.Adult;
 import edu.javacourse.studentorder.exception.CityRegisterException;
 import edu.javacourse.studentorder.exception.TransportException;
-
+//этот класс как бы иммитирует работу Городского реестра населения
 public class FakeCityRegisterChecker implements CityRegisterChecker
 {
     public static final String GOOD_1 = "1000";//Все участники пропмсаны, нет ошибок
@@ -55,4 +55,4 @@ public class FakeCityRegisterChecker implements CityRegisterChecker
         System.out.println(response.toString());
         return response;
     }
-}
+}//class

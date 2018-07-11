@@ -24,12 +24,15 @@ public class CityRegisterValidator {
     }
 
     public AnswerCityRegister checkCityRegister(StudentOrder so){
+        //хранит список элементов по каждому члену семьи студ заявки
         AnswerCityRegister ans = new AnswerCityRegister();
-        //ответы по всем членам студ. заявки
+        //ответы по всем членам семьи студ. заявки
+        //
         ans.addItem(checkPerson(so.getHusband()));
         ans.addItem(checkPerson(so.getWife()));
 
         //получим у заявки список детей студенческой семьи
+        // и добавим в обобщённый ответ
         for(Child child: so.getChildren()){
             ans.addItem(checkPerson(child));
         }
@@ -48,7 +51,7 @@ public class CityRegisterValidator {
                     AnswerCityRegisterItem.CityStatus.NO;
         } catch (CityRegisterException ex){
             ex.printStackTrace(System.out);
-            status =AnswerCityRegisterItem.CityStatus.ERROR;
+            status = AnswerCityRegisterItem.CityStatus.ERROR;
             error = new AnswerCityRegisterItem.CityError(ex.getCode(),ex.getMessage());
         }catch (TransportException ex){
             ex.printStackTrace(System.out);

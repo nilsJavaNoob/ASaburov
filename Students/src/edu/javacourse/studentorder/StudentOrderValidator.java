@@ -36,8 +36,9 @@ public class StudentOrderValidator {
 
     public void checkAll(){
         //читаем все новые заявки студентов с сайта
-        // и храним их в soList[]
-        System.out.println(" кладём в список все новые заявки");
+        // и храним их в soArray[]
+        System.out.println("получаем список все  заявок");
+		//этот метод возвратит LinkedList с заявками семей студентов
         List<StudentOrder> soList = readStudentOrders();
         //вытаскиваем заявки по одной и отдаём на все виды проверок
         // пока не закончитя массив
@@ -46,16 +47,19 @@ public class StudentOrderValidator {
         //for(int c = 0; c < soArray.length; c++){
           //      checkOneOrder(soArray[c]);
         //}
-        //извлекаем из массива по одной заявке и отдаём её на проверку
+        //извлекаем из массива по одной заявке 
+		
         for(StudentOrder so: soList){
-            System.out.println("! заявка !");
+            System.out.println("!извлекли заявку!");
+			//отдаём по одной заявке в метод checkOneOrder
             checkOneOrder(so);
         }
     }//checkAll
 
     public List<StudentOrder> readStudentOrders(){
+		//создали пустой список
         List<StudentOrder> soList = new LinkedList<StudentOrder>();
-
+     // в цикле заполняем этот список заявками от студсемей
         for(int c = 0;c < 5; c++){
             StudentOrder so = SaveStudentOrder.buildStudentOrder(c);
             soList.add(so);
@@ -65,7 +69,8 @@ public class StudentOrderValidator {
 
 //проверяет одну заявку на все виды проверок
     public void checkOneOrder(StudentOrder so){
-        System.out.println("Check One order ");
+        System.out.println("Checking order ");
+		//результат 
         AnswerCityRegister cityAnswer = checkCityRegister(so);
         //------------------
         //AnswerWedding answerWedding = checkWedding(so);
@@ -76,22 +81,17 @@ public class StudentOrderValidator {
     //для каждого вида проверок созданы специальные классы
     // в методах которых проходит проверка
      public AnswerCityRegister checkCityRegister(StudentOrder so) {
-
         return cityRegisterVal.checkCityRegister(so);
     }
 //------------------
     public AnswerWedding checkWedding(StudentOrder so){
-
         return weddingVal.checkWedding(so);
     }
 
     public AnswerChildren checkChildren(StudentOrder so){
-
         return childrenVal.checkChildren(so);
     }
-    public AnswerStudent checkStudent(StudentOrder so)
-
-    {
+    public AnswerStudent checkStudent(StudentOrder so){
         return  studentVal.checkStudent(so);
     }
     public void sendMail(StudentOrder so)
