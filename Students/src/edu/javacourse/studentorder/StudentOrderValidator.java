@@ -70,7 +70,7 @@ public class StudentOrderValidator {
 //проверяет одну заявку на все виды проверок
     public void checkOneOrder(StudentOrder so){
         System.out.println("Checking order ");
-		//результат 
+		//класс-результат
         AnswerCityRegister cityAnswer = checkCityRegister(so);
         //------------------
         //AnswerWedding answerWedding = checkWedding(so);
@@ -81,6 +81,9 @@ public class StudentOrderValidator {
     //для каждого вида проверок созданы специальные классы
     // в методах которых проходит проверка
      public AnswerCityRegister checkCityRegister(StudentOrder so) {
+        //просим класс cityRegisterValidator проверить
+        // наличие семьи в городском реестре
+        //и ожидаем ответ в AnswerCityRegister
         return cityRegisterVal.checkCityRegister(so);
     }
 //------------------

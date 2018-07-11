@@ -22,7 +22,12 @@ public class CityRegisterValidator {
 
         personChecker = new FakeCityRegisterChecker();
     }
-
+    //принимает студ заявку, создаёт объект ответа,
+    // получает из заявки персону(муж,жена или ребёнок)
+    //проверяет её, и добавляет полученный ответ
+    // (в виде объекта AnswerCityRegisterItem item)
+    //в список ответов по всей студ семье(на каждого члена семьи в списке хранится персональный
+    // объект ответ)
     public AnswerCityRegister checkCityRegister(StudentOrder so){
         //хранит список элементов по каждому члену семьи студ заявки
         AnswerCityRegister ans = new AnswerCityRegister();
